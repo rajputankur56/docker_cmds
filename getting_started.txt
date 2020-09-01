@@ -1,0 +1,25 @@
+Step 1 : clone git repo
+git clone https://github.com/dockersamples/node-bulletin-board
+cd node-bulletin-board/bulletin-board-app
+
+Step 2 : define docker file
+File availabel in node_bulletin-board
+
+Step 3 : build and test image
+docker build --tag bulletinboard:1.0 .
+
+Step 4 : Run image as a container
+docker run --publish 8000:8080 --detach --name bb bulletinboard:1.0
+
+There are a couple of common flags here:
+
+--publish asks Docker to forward traffic incoming on the host’s port 8000 to the container’s port 8080. Containers have their own private set of ports, so if you want to reach one from the network, you have to forward traffic to it in this way. Otherwise, firewall rules will prevent all network traffic from reaching your container, as a default security posture.
+--detach asks Docker to run this container in the background.
+--name specifies a name with which you can refer to your container in subsequent commands, in this case bb.
+
+
+Step 5 : 
+Visit your application in a browser at localhost:8000
+
+Step 6 : optional, incase you want to delete image
+docker rm --force bb
