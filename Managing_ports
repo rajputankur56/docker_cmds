@@ -1,0 +1,15 @@
+--- docker pull jenkins 
+
+--- docker inspect Container/Image
+
+ One is the data port of 8080 and the other is the control port of 50000.
+
+To run Jenkins and map the ports, you need to change the Docker run command and add the ‘p’ option which specifies the port mapping. So, you need to run the following command −
+
+--- docker run -p 8080:8080 -p 50000:50000 jenkins 
+
+The left-hand side of the port number mapping is the Docker host port to map to and the right-hand side is the Docker container port number.
+
+When you open the browser and navigate to the Docker host on port 8080, you will see Jenkins up and running.
+
+
