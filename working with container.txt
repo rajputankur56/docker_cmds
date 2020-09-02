@@ -40,5 +40,43 @@ service docker stop
 --- This command is used to start the Docker daemon process
 service docker start
 
---- 
+###########################
+Container and Shells
+
+--- to run a container and exit it without destroying it
+
+sudo docker run –it centos /bin/bash 
+
+We used this command to create a new container and then used the Ctrl+P+Q command to exit out of the container. It ensures that the container still exists even after we exit from the container.
+
+--- Another way to run a container and exit it without destroying it using nsenter command
+    ~ download image for nsenter
+            docker run --rm -v /usr/local/bin:/target jpetazzo/nsenter
+    ~ get process id
+            docker ps
+            docker inspect <CONTAINERID> : grep Pid
+    ~ Use nsenter cmd for process id(Pid)
+            nsenter –m –u –n –p –i –t containerID command
+            -u is used to mention the Uts namespace
+
+            -m is used to mention the mount namespace
+
+            -n is used to mention the network namespace
+
+            -p is used to mention the process namespace
+
+            -i s to make the container run in interactive mode.
+
+            -t is used to connect the I/O streams of the container to the host OS.
+
+            containerID − This is the ID of the container.
+
+            Command − This is the command to run within the container.
+      ex :
+          nsenter –m –u –n –p –i –t 2978 /bin/bash
+   ~ After running it a bash will open just enter exit into it.
+   
+            
+
+
 
