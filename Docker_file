@@ -47,6 +47,10 @@ Step 5 : Check new Image in system
       docker images
 
 Step 6 : Build container from created Image
+        docker run -d -p 80:80 imagename
+        
+        ex :
+                docker run –d –p 80:80 mywebserver 
       
            
 
